@@ -2,7 +2,7 @@ from pleasesetuphere import log_file_path, ip_address, websites
 import pandas as pd
 import streamlit as st
 from dataplot import read_log_file, filter_logs, plot_combined_access_data
-from airesponses import readai, filterai, analyze_ai, concerning_hours, concerning_websites, summary_preferences
+from airesponses import readai, filterai, analyze_ai, concerning_hours, websites, summary_preferences
 
 
 # Main ui
@@ -94,7 +94,7 @@ def main():
     if st.button("AI overview"):
         try:
             logs = readai(log_file_path)
-            filtered_logs = filterai(logs, concerning_websites, concerning_hours)
+            filtered_logs = filterai(logs, websites, concerning_hours)
             if filtered_logs:
                 result = analyze_ai(filtered_logs)
                 st.write(result)
@@ -102,4 +102,3 @@ def main():
             st.write("You need a Groq API key to run this. ", e)
 if __name__ == "__main__":
     main()
-
