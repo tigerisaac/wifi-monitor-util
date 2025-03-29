@@ -3,7 +3,7 @@ from groq import Groq
 import os
 from datetime import datetime
 client = Groq(
-    api_key=os.environ.get("GROQ_API_KEY"), # setup this with ur own if you want
+    api_key=os.environ.get("GROQ_API_KEY"), 
 )
 # Filtering stuff
 concerning_hours = list(range(22, 24)) + list(range(0, 1))  
